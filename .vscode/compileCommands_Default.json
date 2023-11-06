@@ -1,0 +1,74 @@
+[
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PractiseThirdPerson.Build.cs",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PractiseThirdPerson.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PractiseThirdPerson.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PractiseThirdPersonCharacter.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PractiseThirdPersonCharacter.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PractiseThirdPersonGameMode.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PractiseThirdPersonGameMode.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\TestActor.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\TestActor.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	}
+]
