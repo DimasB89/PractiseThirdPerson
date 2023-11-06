@@ -15,6 +15,7 @@ void UPTP_PickableDetector::BeginPlay()
 	Super::BeginPlay();
 	
 	OnComponentBeginOverlap.AddDynamic(this, &UPTP_PickableDetector::OnPickupBeginOverlap);
+	//endoverlap
 }
 
 void UPTP_PickableDetector::OnPickupBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
