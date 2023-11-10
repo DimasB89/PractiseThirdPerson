@@ -72,5 +72,7 @@ public:
 	
 	UFUNCTION(BlueprintCallable)
 	AActor* ClosestActorInSight();
+
+
 };
 

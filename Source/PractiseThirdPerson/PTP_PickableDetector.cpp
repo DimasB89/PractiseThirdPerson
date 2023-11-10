@@ -3,6 +3,7 @@
 
 #include "PTP_PickableDetector.h"
 #include "PTP_PickableActor.h"
+#include <Kismet/GameplayStatics.h>
 
 UPTP_PickableDetector::UPTP_PickableDetector()
 {
@@ -16,6 +17,8 @@ void UPTP_PickableDetector::BeginPlay()
 	
 	OnComponentBeginOverlap.AddDynamic(this, &UPTP_PickableDetector::OnPickupBeginOverlap);
 	//endoverlap
+
+	MyPlayerController = UGameplayStatics::GetPlayerController(this, 0);
 }
 
 void UPTP_PickableDetector::OnPickupBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
@@ -24,6 +27,10 @@ void UPTP_PickableDetector::OnPickupBeginOverlap(UPrimitiveComponent* Overlapped
 		APTP_PickableActor* PickableActor = Cast<APTP_PickableActor>(OtherActor);
 		if (PickableActor) {
 			//hansle collision with pickable actor
+			PickableActor->Destroy();
+			if (MyPlayerController) {
+
+			}
 		}
 	}
 }
