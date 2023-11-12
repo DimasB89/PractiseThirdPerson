@@ -1,5 +1,21 @@
 [
 	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PTP_CoinsDisplayWidget.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PTP_CoinsDisplayWidget.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
 		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PTP_GameMode.cpp",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",

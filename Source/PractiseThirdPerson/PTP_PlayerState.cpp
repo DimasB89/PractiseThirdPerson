@@ -15,10 +15,20 @@ void APTP_PlayerState::CoinPickedUp()
 	if (!GameMode) {
 		GameMode = UGameplayStatics::GetGameMode(GetWorld());
 	}
+	if(!HUD){
+		APlayerController* PlayerController = Cast<APlayerController>(GetOwner());
+        if (PlayerController)
+        {
+            HUD = Cast<APTP_HUD>(PlayerController->GetHUD());
+        }
+	}
+
 	NumOfCoinsPickedUp++;
-	//PreviousScore = NumOfCoinsPickedUp - 1;
+	if(HUD){
+		HUD->UpdateCoinDisplay(NumOfCoinsPickedUp);
+	}
 
 	if (NumOfCoinsPickedUp >= 5) {
-		Cast<APTP_GameMode>(GameMode)->ExitGame(NumOfCoinsPickedUp);////TUT OSTANOVILSJA
+		Cast<APTP_GameMode>(GameMode)->AttemptToExitGame(NumOfCoinsPickedUp);
 	}
 }

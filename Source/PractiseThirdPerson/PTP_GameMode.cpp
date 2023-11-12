@@ -6,11 +6,18 @@
 #include <Kismet/GameplayStatics.h>
 #include <Kismet/KismetSystemLibrary.h>
 
-void APTP_GameMode::ExitGame(int NumOfCoinsPickedUp)
+void APTP_GameMode::AttemptToExitGame(int NumOfCoinsPickedUp)
 {
 	if(NumOfCoinsPickedUp == NumOfCoinsNeededToExitGame){
-		//exit game
-		APlayerController* PlayerController = UGameplayStatics::GetPlayerController(this, 0);
+			//exit game
+			// Set a timer to call a function after 1 second
+    		GetWorld()->GetTimerManager().SetTimer(ExitTimerHandle, this, &APTP_GameMode::ExitGame, 1.0f, false);
+    	}
+}
+
+void APTP_GameMode::ExitGame(){
+
+	APlayerController* PlayerController = UGameplayStatics::GetPlayerController(this, 0);
     
     	if (PlayerController)
     	{
@@ -18,10 +25,7 @@ void APTP_GameMode::ExitGame(int NumOfCoinsPickedUp)
 
         	if (World)
         	{
-           	 	// The parameters are: World context, player controller, quit reason, and bShouldForce
-            	UKismetSystemLibrary::QuitGame(World, PlayerController, EQuitPreference::Quit, false);
+				UKismetSystemLibrary::QuitGame(World, PlayerController, EQuitPreference::Quit, false);
         	}
     	}
-	}
-	//NumOfPickedUpCoins++;
 }

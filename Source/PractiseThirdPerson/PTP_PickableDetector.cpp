@@ -5,6 +5,7 @@
 #include "PTP_PickableActor.h"
 #include <Kismet/GameplayStatics.h>
 #include "PTP_PlayerController.h"
+#include "PTP_HUD.h"
 
 UPTP_PickableDetector::UPTP_PickableDetector()
 {
@@ -20,6 +21,15 @@ void UPTP_PickableDetector::BeginPlay()
 	//endoverlap
 
 	MyPlayerController = UGameplayStatics::GetPlayerController(this, 0);
+	if (MyPlayerController)
+        {
+            APTP_HUD* HUD = Cast<APTP_HUD>(MyPlayerController->GetHUD());
+			if(HUD){
+				//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Hud loaded in pickable detector"));
+				HUD->InitializeCoinsDisplayWidget();
+				HUD->UpdateCoinDisplay(0);
+			}
+        }
 }
 
 void UPTP_PickableDetector::OnPickupBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, 

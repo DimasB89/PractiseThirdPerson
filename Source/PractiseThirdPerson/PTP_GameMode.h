@@ -15,8 +15,10 @@ class PRACTISETHIRDPERSON_API APTP_GameMode : public AGameModeBase
 	GENERATED_BODY()
 
 public:
-	void ExitGame(int NumOfCoinsPickedUp);
+	void AttemptToExitGame(int NumOfCoinsPickedUp);
 	//int NumOfPickedUpCoins = 0;
 private:
+	void ExitGame();
 	const int NumOfCoinsNeededToExitGame = 5;
+	FTimerHandle ExitTimerHandle;
 };
