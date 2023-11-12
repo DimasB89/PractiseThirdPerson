@@ -20,7 +20,7 @@ class PRACTISETHIRDPERSON_API APTP_PlayerController : public APlayerController
 public:
 	//UPROPERTY(BlueprintAssignable, Category = "Events")
 	//FOnCoinPickupDelegate OnCoinPickup;
-	AGameModeBase* GameMode;
+	//AGameModeBase* GameMode;
 	APlayerState* PlayerState;
 
 	void CoinPickedUp();

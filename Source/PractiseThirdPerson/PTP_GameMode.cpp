@@ -2,8 +2,26 @@
 
 
 #include "PTP_GameMode.h"
+#include <GameFramework/PlayerController.h>
+#include <Kismet/GameplayStatics.h>
+#include <Kismet/KismetSystemLibrary.h>
 
-void APTP_GameMode::PlayerPickedUpCoin()
+void APTP_GameMode::ExitGame(int NumOfCoinsPickedUp)
 {
-	NumOfPickedUpCoins++;
+	if(NumOfCoinsPickedUp == NumOfCoinsNeededToExitGame){
+		//exit game
+		APlayerController* PlayerController = UGameplayStatics::GetPlayerController(this, 0);
+    
+    	if (PlayerController)
+    	{
+        	UWorld* World = PlayerController->GetWorld();
+
+        	if (World)
+        	{
+           	 	// The parameters are: World context, player controller, quit reason, and bShouldForce
+            	UKismetSystemLibrary::QuitGame(World, PlayerController, EQuitPreference::Quit, false);
+        	}
+    	}
+	}
+	//NumOfPickedUpCoins++;
 }

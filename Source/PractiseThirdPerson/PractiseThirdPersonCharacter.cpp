@@ -60,6 +60,7 @@ void APractiseThirdPersonCharacter::BeginPlay()
 
 	//Add Input Mapping Context
 	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
+	//if (APTP_PlayerController* PlayerController = Cast<APTP_PlayerController>(Controller))
 	{
 		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
 		{

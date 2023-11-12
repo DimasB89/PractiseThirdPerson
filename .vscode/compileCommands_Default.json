@@ -1,5 +1,101 @@
 [
 	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PTP_GameMode.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PTP_GameMode.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PTP_HUD.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PTP_HUD.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PTP_PickableActor.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PTP_PickableActor.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PTP_PickableDetector.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PTP_PickableDetector.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PTP_PlayerController.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PTP_PlayerController.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PTP_PlayerState.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PTP_PlayerState.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\.vscode\\compileCommands_Default\\PractiseThirdPerson.261.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
 		"file": "C:\\Users\\belog\\Documents\\GitHub\\PractiseThirdPerson\\Source\\PractiseThirdPerson\\PractiseThirdPerson.Build.cs",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",

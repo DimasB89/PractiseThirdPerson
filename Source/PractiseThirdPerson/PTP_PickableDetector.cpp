@@ -4,6 +4,7 @@
 #include "PTP_PickableDetector.h"
 #include "PTP_PickableActor.h"
 #include <Kismet/GameplayStatics.h>
+#include "PTP_PlayerController.h"
 
 UPTP_PickableDetector::UPTP_PickableDetector()
 {
@@ -21,7 +22,8 @@ void UPTP_PickableDetector::BeginPlay()
 	MyPlayerController = UGameplayStatics::GetPlayerController(this, 0);
 }
 
-void UPTP_PickableDetector::OnPickupBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+void UPTP_PickableDetector::OnPickupBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, 
+UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	if (OtherActor && OtherActor != GetOwner()) {
 		APTP_PickableActor* PickableActor = Cast<APTP_PickableActor>(OtherActor);
@@ -29,7 +31,7 @@ void UPTP_PickableDetector::OnPickupBeginOverlap(UPrimitiveComponent* Overlapped
 			//hansle collision with pickable actor
 			PickableActor->Destroy();
 			if (MyPlayerController) {
-
+				Cast<APTP_PlayerController>(MyPlayerController)->CoinPickedUp();
 			}
 		}
 	}

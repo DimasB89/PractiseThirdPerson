@@ -10,9 +10,9 @@ void APTP_PlayerController::CoinPickedUp()
 {
 	//OnCoinPickup.Broadcast();
 
-	if (!GameMode) {
+	/*if (!GameMode) {
 		GameMode = UGameplayStatics::GetGameMode(GetWorld());
-	}
+	}*/
 	if (!PlayerState) {
 		PlayerState = UGameplayStatics::GetPlayerState(GetWorld(), 0);
 	}
@@ -21,9 +21,9 @@ void APTP_PlayerController::CoinPickedUp()
 		Cast<APTP_PlayerState>(PlayerState)->CoinPickedUp();
 	}
 
-	if (GameMode) {
+	/*if (GameMode) {
 		Cast<APTP_GameMode>(GameMode)->PlayerPickedUpCoin();
-	}
+	}*/
 
 
 }

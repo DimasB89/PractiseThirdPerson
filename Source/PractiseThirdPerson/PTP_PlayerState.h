@@ -15,12 +15,12 @@ class PRACTISETHIRDPERSON_API APTP_PlayerState : public APlayerState
 	GENERATED_BODY()
 
 public:
-	int NumOfCoinsPickedUp = 0;
-	int PreviousScore = 0;
-
+	//int PreviousScore = 0;
+	//int GetNumOfCoinsPickedUp();
 	void CoinPickedUp();
 
 private:
-	AGameModeBase GameMode;
+	class AGameModeBase* GameMode;
+	int NumOfCoinsPickedUp = 0;
 	
 };

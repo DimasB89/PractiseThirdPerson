@@ -5,15 +5,20 @@
 #include "PTP_GameMode.h"
 #include <Kismet/GameplayStatics.h>
 
+/*int APTP_PlayerState::GetNumOfCoinsPickedUp()
+{
+    return NumOfCoinsPickedUp;
+}*/
+
 void APTP_PlayerState::CoinPickedUp()
 {
 	if (!GameMode) {
 		GameMode = UGameplayStatics::GetGameMode(GetWorld());
 	}
 	NumOfCoinsPickedUp++;
-	PreviousScore = NumOfCoinsPickedUp - 1;
+	//PreviousScore = NumOfCoinsPickedUp - 1;
 
 	if (NumOfCoinsPickedUp >= 5) {
-		Cast<APTP_GameMode>(GameMode)->PlayerPickedUpCoin();////TUT OSTANOVILSJA
+		Cast<APTP_GameMode>(GameMode)->ExitGame(NumOfCoinsPickedUp);////TUT OSTANOVILSJA
 	}
 }
