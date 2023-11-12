@@ -24,6 +24,9 @@ protected:
 	UFUNCTION()
 	void OnPickupBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, 
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	UFUNCTION()//omg.. took sometime to find that endoverlap didnt work because i forgot to add this UFUNC to it..
+	void OnPickupEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, 
+	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 	
 	APlayerController* MyPlayerController;
 };

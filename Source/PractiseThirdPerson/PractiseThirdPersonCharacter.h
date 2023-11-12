@@ -37,6 +37,10 @@ class APractiseThirdPersonCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* LookAction;
 
+	/** Pickup Input Action */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputAction* PickupAction;
+
 public:
 	APractiseThirdPersonCharacter();
 
@@ -62,6 +66,11 @@ protected:
 	// To add mapping context
 	virtual void BeginPlay();
 
+	void PickupClosestActor();
+	//APlayerController* PlayerController;
+
+	TArray<AActor*> StoredPickables;
+
 public:
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
@@ -72,6 +81,11 @@ public:
 	
 	UFUNCTION(BlueprintCallable)
 	AActor* ClosestActorInSight();
+
+	
+    void AddNearbyPickableActor(AActor* Actor);
+    void RemoveNearbyPickableActor(AActor* Actor);
+    AActor* GetClosestPickableActor();
 
 
 };

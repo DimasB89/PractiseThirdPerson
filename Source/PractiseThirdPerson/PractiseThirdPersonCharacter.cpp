@@ -11,6 +11,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "TestActor.h"
 #include "Kismet/GameplayStatics.h"
+#include "PTP_PlayerController.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -107,6 +108,60 @@ AActor *APractiseThirdPersonCharacter::ClosestActorInSight()
     return nullptr;
 }
 
+void APractiseThirdPersonCharacter::AddNearbyPickableActor(AActor *Actor)
+{
+	if (Actor && !StoredPickables.Contains(Actor)){
+		StoredPickables.Add(Actor);
+	}
+}
+
+void APractiseThirdPersonCharacter::RemoveNearbyPickableActor(AActor *Actor)
+{
+	if(Actor){
+		StoredPickables.Remove(Actor);
+	}
+}
+
+AActor *APractiseThirdPersonCharacter::GetClosestPickableActor()
+{
+    AActor* ClosestActor = nullptr;
+    float MinDistanceSquared = FLT_MAX; // Initialize with the maximum possible float value
+
+    // Get the current location of your character or the component
+    FVector MyLocation = GetActorLocation(); // Or GetComponentLocation() if this is a component
+
+    for (AActor* Actor : StoredPickables)
+    {
+        if (Actor)
+        {
+            float DistanceSquared = FVector::DistSquared(MyLocation, Actor->GetActorLocation());
+            if (DistanceSquared < MinDistanceSquared)
+            {
+                MinDistanceSquared = DistanceSquared;
+                ClosestActor = Actor;
+            }
+        }
+    }
+
+    return ClosestActor;
+}
+
+void APractiseThirdPersonCharacter::PickupClosestActor()
+{
+    AActor* ClosestActor = GetClosestPickableActor();
+    if (ClosestActor && StoredPickables.Contains(ClosestActor))
+    {
+		
+        ClosestActor->Destroy();
+		if (APlayerController* PlayerController = Cast<APlayerController>(Controller)) {
+			Cast<APTP_PlayerController>(PlayerController)->CoinPickedUp();
+		}
+
+		// Remove the actor from StoredPickables
+        StoredPickables.Remove(ClosestActor);
+    }
+}
+
 //////////////////////////////////////////////////////////////////////////
 // Input
 
@@ -124,6 +179,9 @@ void APractiseThirdPersonCharacter::SetupPlayerInputComponent(class UInputCompon
 
 		//Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &APractiseThirdPersonCharacter::Look);
+
+		//PickUp
+		EnhancedInputComponent->BindAction(PickupAction, ETriggerEvent::Triggered, this, &APractiseThirdPersonCharacter::PickupClosestActor);
 
 	}
 

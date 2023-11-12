@@ -6,6 +6,7 @@
 #include <Kismet/GameplayStatics.h>
 #include "PTP_PlayerController.h"
 #include "PTP_HUD.h"
+#include "PractiseThirdPersonCharacter.h"
 
 UPTP_PickableDetector::UPTP_PickableDetector()
 {
@@ -18,7 +19,7 @@ void UPTP_PickableDetector::BeginPlay()
 	Super::BeginPlay();
 	
 	OnComponentBeginOverlap.AddDynamic(this, &UPTP_PickableDetector::OnPickupBeginOverlap);
-	//endoverlap
+	OnComponentEndOverlap.AddDynamic(this, &UPTP_PickableDetector::OnPickupEndOverlap);
 
 	MyPlayerController = UGameplayStatics::GetPlayerController(this, 0);
 	if (MyPlayerController)
@@ -38,11 +39,31 @@ UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHi
 	if (OtherActor && OtherActor != GetOwner()) {
 		APTP_PickableActor* PickableActor = Cast<APTP_PickableActor>(OtherActor);
 		if (PickableActor) {
-			//hansle collision with pickable actor
-			PickableActor->Destroy();
+			//handle collision with pickable actor
+
+			//old way
+			/*PickableActor->Destroy();
 			if (MyPlayerController) {
 				Cast<APTP_PlayerController>(MyPlayerController)->CoinPickedUp();
-			}
+			}*/
+
+			Cast<APractiseThirdPersonCharacter>(GetOwner())->AddNearbyPickableActor(OtherActor);
+
+		}
+	}
+}
+
+void UPTP_PickableDetector::OnPickupEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, 
+UPrimitiveComponent* OtherComp, int32 OtherBodyIndex) 
+{
+
+	 UE_LOG(LogTemp, Warning, TEXT("Overlap Ended with Actor: %s"), *OtherActor->GetName());
+    if (OtherActor && OtherActor != GetOwner()) {
+		APTP_PickableActor* PickableActor = Cast<APTP_PickableActor>(OtherActor);
+		if (PickableActor) {
+			Cast<APractiseThirdPersonCharacter>(GetOwner())->RemoveNearbyPickableActor(OtherActor);
+			UE_LOG(LogTemp, Warning, TEXT("Coin removed from StoredPickables"));
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Coin removed from StoredPickables"));
 		}
 	}
 }
