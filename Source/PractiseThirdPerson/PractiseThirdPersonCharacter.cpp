@@ -65,7 +65,7 @@ void APractiseThirdPersonCharacter::BeginPlay()
 	{
 		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
 		{
-			Subsystem->AddMappingContext(DefaultMappingContext, 0);
+			Subsystem->AddMappingContext(DefaultMappingContext, 0);// 0 - stands for priority
 		}
 	}
 
@@ -162,6 +162,51 @@ void APractiseThirdPersonCharacter::PickupClosestActor()
     }
 }
 
+void APractiseThirdPersonCharacter::PrintMsg1a() {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Key B was Pressed"));
+}
+
+void APractiseThirdPersonCharacter::PrintMsg2a() {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Key B was Released"));
+}
+
+void APractiseThirdPersonCharacter::PrintMsg3a() {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Key B is held"));
+}
+
+void APractiseThirdPersonCharacter::PrintMsg1b() {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Input N was Pressed"));
+}
+
+void APractiseThirdPersonCharacter::PrintMsg2b() {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Input N was Released"));
+}
+
+void APractiseThirdPersonCharacter::PrintMsg3b() {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Input N is Held"));
+}
+
+void APractiseThirdPersonCharacter::SwitchMessageInputs() {
+
+
+	//need to unbind before rebinding if we use this way
+	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(copyInputComponent)) {
+
+		//EnhancedInputComponent->RemoveActionBinding(MsgAction,)
+		//Msg
+		EnhancedInputComponent->BindAction(MsgAction, ETriggerEvent::Started, this, &APractiseThirdPersonCharacter::PrintMsg1b);
+		EnhancedInputComponent->BindAction(MsgAction, ETriggerEvent::Completed, this, &APractiseThirdPersonCharacter::PrintMsg2b);
+		EnhancedInputComponent->BindAction(MsgAction, ETriggerEvent::Ongoing, this, &APractiseThirdPersonCharacter::PrintMsg3b);
+		//MsgAddon
+		EnhancedInputComponent->BindAction(MsgAddonAction, ETriggerEvent::Started, this, &APractiseThirdPersonCharacter::PrintMsg1a);
+		EnhancedInputComponent->BindAction(MsgAddonAction, ETriggerEvent::Completed, this, &APractiseThirdPersonCharacter::PrintMsg2a);
+		EnhancedInputComponent->BindAction(MsgAddonAction, ETriggerEvent::Ongoing, this, &APractiseThirdPersonCharacter::PrintMsg3a);
+	
+	}
+}
+
+
+
 //////////////////////////////////////////////////////////////////////////
 // Input
 
@@ -170,6 +215,8 @@ void APractiseThirdPersonCharacter::SetupPlayerInputComponent(class UInputCompon
 	// Set up action bindings
 	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent)) {
 		
+		copyInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent);
+
 		//Jumping
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
@@ -182,6 +229,18 @@ void APractiseThirdPersonCharacter::SetupPlayerInputComponent(class UInputCompon
 
 		//PickUp
 		EnhancedInputComponent->BindAction(PickupAction, ETriggerEvent::Triggered, this, &APractiseThirdPersonCharacter::PickupClosestActor);
+
+		//Exercise 13.11.23
+		//Msg
+		EnhancedInputComponent->BindAction(MsgAction, ETriggerEvent::Started, this, &APractiseThirdPersonCharacter::PrintMsg1a);
+		EnhancedInputComponent->BindAction(MsgAction, ETriggerEvent::Completed, this, &APractiseThirdPersonCharacter::PrintMsg2a);
+		EnhancedInputComponent->BindAction(MsgAction, ETriggerEvent::Ongoing, this, &APractiseThirdPersonCharacter::PrintMsg3a);
+		//MsgAddon
+		EnhancedInputComponent->BindAction(MsgAddonAction, ETriggerEvent::Started, this, &APractiseThirdPersonCharacter::PrintMsg1b);
+		EnhancedInputComponent->BindAction(MsgAddonAction, ETriggerEvent::Completed, this, &APractiseThirdPersonCharacter::PrintMsg2b);
+		EnhancedInputComponent->BindAction(MsgAddonAction, ETriggerEvent::Ongoing, this, &APractiseThirdPersonCharacter::PrintMsg3b);
+		//Switch
+		EnhancedInputComponent->BindAction(SwitchMsgAction, ETriggerEvent::Triggered, this, &APractiseThirdPersonCharacter::SwitchMessageInputs);
 
 	}
 

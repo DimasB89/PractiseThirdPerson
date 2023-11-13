@@ -41,6 +41,19 @@ class APractiseThirdPersonCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* PickupAction;
 
+	//Exercise 13.11.23
+	/** Message Input Action */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputAction* MsgAction;
+
+	/** Message Addon Input Action */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputAction* MsgAddonAction;
+
+	/** Switch Message Input Action */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputAction* SwitchMsgAction;
+
 public:
 	APractiseThirdPersonCharacter();
 
@@ -67,6 +80,15 @@ protected:
 	virtual void BeginPlay();
 
 	void PickupClosestActor();
+	//exercise 13.11.23
+	void PrintMsg1a();
+	void PrintMsg2a();
+	void PrintMsg3a();
+	void PrintMsg1b();
+	void PrintMsg2b();
+	void PrintMsg3b();
+	void SwitchMessageInputs();
+	UEnhancedInputComponent* copyInputComponent;
 	//APlayerController* PlayerController;
 
 	TArray<AActor*> StoredPickables;
