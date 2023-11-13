@@ -62,8 +62,8 @@ UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 		APTP_PickableActor* PickableActor = Cast<APTP_PickableActor>(OtherActor);
 		if (PickableActor) {
 			Cast<APractiseThirdPersonCharacter>(GetOwner())->RemoveNearbyPickableActor(OtherActor);
-			UE_LOG(LogTemp, Warning, TEXT("Coin removed from StoredPickables"));
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Coin removed from StoredPickables"));
+			//UE_LOG(LogTemp, Warning, TEXT("Coin removed from StoredPickables"));
+			//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Coin removed from StoredPickables"));
 		}
 	}
 }
