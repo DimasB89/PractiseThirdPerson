@@ -25,6 +25,14 @@ class APractiseThirdPersonCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputMappingContext* DefaultMappingContext;
 
+	/** MappingContext */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputMappingContext* FirstMapContext;
+
+	/** MappingContext */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputMappingContext* SecondMapContext;
+
 	/** Jump Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* JumpAction;
@@ -48,11 +56,11 @@ class APractiseThirdPersonCharacter : public ACharacter
 
 	/** Message Addon Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	class UInputAction* MsgAddonAction;
+	class UInputAction* DoubleInputAction;
 
 	/** Switch Message Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	class UInputAction* SwitchMsgAction;
+	class UInputAction* SwitchInputContextAction;
 
 public:
 	APractiseThirdPersonCharacter();
@@ -70,6 +78,23 @@ protected:
 
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
+
+	//exercise 13.11.23
+
+	/** Called for looking input */
+	void PressBtn(const FInputActionValue& Value);
+
+	/** Called for looking input */
+	void HoldBtn(const FInputActionValue& Value);
+
+	/** Called for looking input */
+	void ReleaseBtn(const FInputActionValue& Value);
+
+	/** Called for looking input */
+	void TwoBtnsPress(const FInputActionValue& Value);
+
+	/** Called for looking input */
+	void SwitchInputMappings(const FInputActionValue& Value);
 			
 
 protected:
@@ -80,18 +105,9 @@ protected:
 	virtual void BeginPlay();
 
 	void PickupClosestActor();
-	//exercise 13.11.23
-	void PrintMsg1a();
-	void PrintMsg2a();
-	void PrintMsg3a();
-	void PrintMsg1b();
-	void PrintMsg2b();
-	void PrintMsg3b();
-	void SwitchMessageInputs();
-	UEnhancedInputComponent* copyInputComponent;
-	//APlayerController* PlayerController;
 
 	TArray<AActor*> StoredPickables;
+	bool bFirstMappingApplied;
 
 public:
 	/** Returns CameraBoom subobject **/
