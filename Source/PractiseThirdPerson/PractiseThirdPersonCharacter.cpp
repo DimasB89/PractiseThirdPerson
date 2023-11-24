@@ -10,8 +10,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "TestActor.h"
-#include <Kismet/GameplayStatics.h>
-#include <Kismet/KismetSystemLibrary.h>
+#include "Kismet/GameplayStatics.h"
 #include "PTP_PlayerController.h"
 
 
@@ -67,8 +66,6 @@ void APractiseThirdPersonCharacter::BeginPlay()
 		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
 		{
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);// 0 - stands for priority
-			Subsystem->AddMappingContext(FirstMapContext, 0);
-			bFirstMappingApplied = true;
 		}
 	}
 
@@ -165,6 +162,51 @@ void APractiseThirdPersonCharacter::PickupClosestActor()
     }
 }
 
+void APractiseThirdPersonCharacter::PrintMsg1a() {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Key B was Pressed"));
+}
+
+void APractiseThirdPersonCharacter::PrintMsg2a() {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Key B was Released"));
+}
+
+void APractiseThirdPersonCharacter::PrintMsg3a() {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Key B is held"));
+}
+
+void APractiseThirdPersonCharacter::PrintMsg1b() {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Input N was Pressed"));
+}
+
+void APractiseThirdPersonCharacter::PrintMsg2b() {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Input N was Released"));
+}
+
+void APractiseThirdPersonCharacter::PrintMsg3b() {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Input N is Held"));
+}
+
+void APractiseThirdPersonCharacter::SwitchMessageInputs() {
+
+
+	//need to unbind before rebinding if we use this way
+	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(copyInputComponent)) {
+
+		//EnhancedInputComponent->RemoveActionBinding(MsgAction,)
+		//Msg
+		EnhancedInputComponent->BindAction(MsgAction, ETriggerEvent::Started, this, &APractiseThirdPersonCharacter::PrintMsg1b);
+		EnhancedInputComponent->BindAction(MsgAction, ETriggerEvent::Completed, this, &APractiseThirdPersonCharacter::PrintMsg2b);
+		EnhancedInputComponent->BindAction(MsgAction, ETriggerEvent::Ongoing, this, &APractiseThirdPersonCharacter::PrintMsg3b);
+		//MsgAddon
+		EnhancedInputComponent->BindAction(MsgAddonAction, ETriggerEvent::Started, this, &APractiseThirdPersonCharacter::PrintMsg1a);
+		EnhancedInputComponent->BindAction(MsgAddonAction, ETriggerEvent::Completed, this, &APractiseThirdPersonCharacter::PrintMsg2a);
+		EnhancedInputComponent->BindAction(MsgAddonAction, ETriggerEvent::Ongoing, this, &APractiseThirdPersonCharacter::PrintMsg3a);
+	
+	}
+}
+
+
+
 //////////////////////////////////////////////////////////////////////////
 // Input
 
@@ -172,6 +214,8 @@ void APractiseThirdPersonCharacter::SetupPlayerInputComponent(class UInputCompon
 {
 	// Set up action bindings
 	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent)) {
+		
+		copyInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent);
 
 		//Jumping
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
@@ -187,13 +231,19 @@ void APractiseThirdPersonCharacter::SetupPlayerInputComponent(class UInputCompon
 		EnhancedInputComponent->BindAction(PickupAction, ETriggerEvent::Triggered, this, &APractiseThirdPersonCharacter::PickupClosestActor);
 
 		//Exercise 13.11.23
-		
-		EnhancedInputComponent->BindAction(MsgAction, ETriggerEvent::Started, this, &APractiseThirdPersonCharacter::PressBtn);
-		EnhancedInputComponent->BindAction(MsgAction, ETriggerEvent::Completed, this, &APractiseThirdPersonCharacter::ReleaseBtn);
-		EnhancedInputComponent->BindAction(MsgAction, ETriggerEvent::Ongoing, this, &APractiseThirdPersonCharacter::HoldBtn);
-		EnhancedInputComponent->BindAction(DoubleInputAction, ETriggerEvent::Triggered, this, &APractiseThirdPersonCharacter::TwoBtnsPress);
-		EnhancedInputComponent->BindAction(SwitchInputContextAction, ETriggerEvent::Triggered, this, &APractiseThirdPersonCharacter::SwitchInputMappings);
+		//Msg
+		EnhancedInputComponent->BindAction(MsgAction, ETriggerEvent::Started, this, &APractiseThirdPersonCharacter::PrintMsg1a);
+		EnhancedInputComponent->BindAction(MsgAction, ETriggerEvent::Completed, this, &APractiseThirdPersonCharacter::PrintMsg2a);
+		EnhancedInputComponent->BindAction(MsgAction, ETriggerEvent::Ongoing, this, &APractiseThirdPersonCharacter::PrintMsg3a);
+		//MsgAddon
+		EnhancedInputComponent->BindAction(MsgAddonAction, ETriggerEvent::Started, this, &APractiseThirdPersonCharacter::PrintMsg1b);
+		EnhancedInputComponent->BindAction(MsgAddonAction, ETriggerEvent::Completed, this, &APractiseThirdPersonCharacter::PrintMsg2b);
+		EnhancedInputComponent->BindAction(MsgAddonAction, ETriggerEvent::Ongoing, this, &APractiseThirdPersonCharacter::PrintMsg3b);
+		//Switch
+		EnhancedInputComponent->BindAction(SwitchMsgAction, ETriggerEvent::Triggered, this, &APractiseThirdPersonCharacter::SwitchMessageInputs);
+
 	}
+
 }
 
 void APractiseThirdPersonCharacter::Move(const FInputActionValue& Value)
@@ -232,49 +282,6 @@ void APractiseThirdPersonCharacter::Look(const FInputActionValue& Value)
 	}
 }
 
-void APractiseThirdPersonCharacter::PressBtn(const FInputActionValue &Value)
-{
-	UKismetSystemLibrary::PrintString(GetWorld(),TEXT("Button has been pressed"));
-}
 
-void APractiseThirdPersonCharacter::HoldBtn(const FInputActionValue &Value)
-{
-	UKismetSystemLibrary::PrintString(GetWorld(),TEXT("Button is held"));
-}
 
-void APractiseThirdPersonCharacter::ReleaseBtn(const FInputActionValue &Value)
-{
-	UKismetSystemLibrary::PrintString(GetWorld(),TEXT("Button has been released"));
-}
 
-void APractiseThirdPersonCharacter::TwoBtnsPress(const FInputActionValue &Value)
-{
-	UKismetSystemLibrary::PrintString(GetWorld(),TEXT("Two buttons have been pressed"));
-}
-
-void APractiseThirdPersonCharacter::SwitchInputMappings(const FInputActionValue &Value)
-{
-	UKismetSystemLibrary::PrintString(GetWorld(),TEXT("Context Input Mappings have been switched"));
-
-	//Add Input Mapping Context
-	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
-	{
-		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
-		{
-			if (bFirstMappingApplied)
-			{
-				Subsystem->RemoveMappingContext(FirstMapContext);
-				Subsystem->AddMappingContext(SecondMapContext, 0);
-				bFirstMappingApplied = false;
-			}else{
-				Subsystem->RemoveMappingContext(SecondMapContext);
-				Subsystem->AddMappingContext(FirstMapContext, 0);
-				bFirstMappingApplied = true;
-			}
-		}
-	}
-	
-
-	
-	
-}
